@@ -36,6 +36,7 @@ class VirtualObjectSelectionViewController: UITableViewController {
     
     /// The collection of `VirtualObject`s to select from.
     var virtualObjects = [VirtualObject]()
+    var addedCardObjects = [VirtualObject]()
     
     /// The rows of the currently selected `VirtualObject`s.
     var selectedVirtualObjectRows = IndexSet()
@@ -56,12 +57,14 @@ class VirtualObjectSelectionViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let object = virtualObjects[indexPath.row]
-        
+        let newCard = object.clone()
+        addedCardObjects.append(newCard)
+
         // Check if the current row is already selected, then deselect it.
         if selectedVirtualObjectRows.contains(indexPath.row) {
             delegate?.virtualObjectSelectionViewController(self, didDeselectObject: object)
         } else {
-            delegate?.virtualObjectSelectionViewController(self, didSelectObject: object)
+            delegate?.virtualObjectSelectionViewController(self, didSelectObject: newCard)
         }
 
         dismiss(animated: true, completion: nil)
