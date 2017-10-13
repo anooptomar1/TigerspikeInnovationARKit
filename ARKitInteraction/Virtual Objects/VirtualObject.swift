@@ -19,9 +19,23 @@ class VirtualObject: SCNReferenceNode, DetailViewModel {
         }
     }
     
-    var service: String {
+    var companyType: String {
         switch modelName {
-        case "card": return "Built the table"
+        case "card": return "Builder"
+        default: return ""
+        }
+    }
+    
+    var address: String {
+        switch modelName {
+        case "card": return "18 Crown St, Surry Hills"
+        default: return ""
+        }
+    }
+    
+    var contactName: String {
+        switch modelName {
+        case "card": return "Terry Lee"
         default: return ""
         }
     }
@@ -33,17 +47,24 @@ class VirtualObject: SCNReferenceNode, DetailViewModel {
         }
     }
     
-    var web: String {
+    var jobDescription: String {
         switch modelName {
-        case "card": return "http://www.stanleytools.com/products/hand-tools/hammers/specialty"
+        case "card": return "Built the table"
         default: return ""
         }
     }
     
-    var logo: UIImage {
+    var jobCompletionDate: String {
         switch modelName {
-        case "card": return  #imageLiteral(resourceName: "candle")
-        default: return #imageLiteral(resourceName: "chair")
+        case "card": return "10/10/17"
+        default: return ""
+        }
+    }
+    
+    var history: String {
+        switch modelName {
+        case "card": return "No previous history"
+        default: return ""
         }
     }
     
