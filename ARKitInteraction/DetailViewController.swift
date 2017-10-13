@@ -17,26 +17,21 @@ protocol DetailViewModel {
     var logo: UIImage { get }
 }
 
-class DetailViewController: UIViewController {
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var serviceLabel: UILabel!
-    @IBOutlet weak var phoneTextView: UITextView!
-    @IBOutlet weak var webTextView: UITextView!
-    @IBOutlet weak var logoImageView: UIImageView!
+class DetailViewController: UITableViewController {
     
     var viewModel: DetailViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameLabel.text = "Name: \(viewModel.companyName)"
-        serviceLabel.text = "Service provided: \(viewModel.service)"
-        phoneTextView.text = viewModel.phone
-        webTextView.text = viewModel.web
-        logoImageView.image = viewModel.logo
+        setupNavBar()
     }
     
-    @IBAction func returnTapped(_ sender: Any) {
-        
+    func setupNavBar() {
+        let leftBarButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
+        navigationItem.leftBarButtonItem = leftBarButton
+    }
+    
+    @objc private func doneTapped() {
         dismiss(animated: true, completion: nil)
     }
 }

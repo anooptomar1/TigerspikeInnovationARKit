@@ -131,7 +131,8 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
             controller.viewModel = tappedObject
-            viewController?.present(controller, animated: true, completion: nil)
+            let nav = UINavigationController(rootViewController: controller)
+            viewController?.present(nav, animated: true, completion: nil)
             
         } else if let object = selectedObject {
             // Teleport the object to whereever the user touched the screen.
