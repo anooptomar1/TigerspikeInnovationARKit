@@ -59,6 +59,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        virtualObjectInteraction.viewController = self
+        
         sceneView.delegate = self
         sceneView.session.delegate = self
 

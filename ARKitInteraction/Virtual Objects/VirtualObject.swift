@@ -9,7 +9,43 @@ import Foundation
 import SceneKit
 import ARKit
 
-class VirtualObject: SCNReferenceNode {
+class VirtualObject: SCNReferenceNode, DetailViewModel {
+    
+    // DetailViewModel
+    var companyName: String {
+        switch modelName {
+        case "card": return "The Hammer Company"
+        default: return ""
+        }
+    }
+    
+    var service: String {
+        switch modelName {
+        case "card": return "Built the table"
+        default: return ""
+        }
+    }
+    
+    var phone: String {
+        switch modelName {
+        case "card": return "0414222333"
+        default: return ""
+        }
+    }
+    
+    var web: String {
+        switch modelName {
+        case "card": return "http://www.stanleytools.com/products/hand-tools/hammers/specialty"
+        default: return ""
+        }
+    }
+    
+    var logo: UIImage {
+        switch modelName {
+        case "card": return  #imageLiteral(resourceName: "candle")
+        default: return #imageLiteral(resourceName: "chair")
+        }
+    }
     
     /// The model name derived from the `referenceURL`.
     var modelName: String {

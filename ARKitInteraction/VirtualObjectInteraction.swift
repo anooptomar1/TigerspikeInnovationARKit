@@ -33,6 +33,8 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
     
     /// The tracked screen position used to update the `trackedObject`'s position in `updateObjectToCurrentTrackingPosition()`.
     private var currentTrackingPosition: CGPoint?
+    
+    weak var viewController: UIViewController?
 
     init(sceneView: VirtualObjectARView) {
         self.sceneView = sceneView
@@ -123,6 +125,14 @@ class VirtualObjectInteraction: NSObject, UIGestureRecognizerDelegate {
         if let tappedObject = sceneView.virtualObject(at: touchLocation) {
             // Select a new object.
             selectedObject = tappedObject
+            
+            // TODO:
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+            controller.viewModel = tappedObject
+            viewController?.present(controller, animated: true, completion: nil)
+            
         } else if let object = selectedObject {
             // Teleport the object to whereever the user touched the screen.
             translate(object, basedOn: touchLocation, infinitePlane: false)
