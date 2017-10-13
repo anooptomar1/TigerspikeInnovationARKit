@@ -47,6 +47,13 @@ class VirtualObject: SCNReferenceNode, DetailViewModel {
         }
     }
     
+    var website: String {
+        switch modelName {
+        case "card": return "http://www.stanleytools.com/products/hand-tools/hammers/specialty"
+        default: return ""
+        }
+    }
+    
     var jobDescription: String {
         switch modelName {
         case "card": return "Built the table"
@@ -63,7 +70,7 @@ class VirtualObject: SCNReferenceNode, DetailViewModel {
     
     var history: String {
         switch modelName {
-        case "card": return "No previous history"
+        case "card": return "No previous history."
         default: return ""
         }
     }
