@@ -32,6 +32,7 @@ class DetailViewController: UIViewController {
         serviceLabel.text = "Service provided: \(viewModel.service)"
         phoneTextView.text = viewModel.phone
         webTextView.text = viewModel.web
+        logoImageView.image = viewModel.logo
     }
     
     @IBAction func returnTapped(_ sender: Any) {
